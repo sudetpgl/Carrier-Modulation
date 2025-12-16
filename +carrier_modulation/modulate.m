@@ -19,7 +19,7 @@ function [s_tilde] = modulate(s,f_0,n_os)
 % part of the modulated signal is subtracted to get the signal s_tilde.
  
 s_tilde = zeros(size(s));
-n = 0 : length(s)-1;
+n = 0 : length(s)-1; % sampling index
 t = n/n_os;
 s_shifted = s .* exp(1j * 2* pi * f_0 * t ); % S.e^(j.2.pi.f_0.t) => S(f-f_0)
 s_tilde = real(s_shifted); % imaginary signals can't be transmitted

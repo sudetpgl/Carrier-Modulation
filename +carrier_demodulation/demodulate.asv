@@ -11,17 +11,19 @@ function [r_tilde_IQ] = demodulate(seq_in,f,phase,n_os,is_complex)
 % of the demodulated signal the modulated signal will be multiplied with
 % sqrt(2)*cos(2*pi*f*t + phase). To get the quadrature component the signal
 % will be multiplied with -sqrt(2)*sin(2*pi*f*t + phase). The resulting I
-% and Q components are combined to form the complex baseband signal
-% r_tilde_IQ = R_I + 1j*R_Q, which is required for 2D modulation schemes
-% such as QPSK and QAM.
+% and Q components are combined 
+%  
+% (cosine), covering the I component, and quadrature (sine), covering the Q component, of normalized frequency f and
+% phase. Since the singal original baseband signal was complex the quadrature component R_Q will be
+% multiplied with j. 
 
 % If is_complex is false the singal will be multiplied only with in-phase
-% (cosine) to get the in-phase component. The result signal will be  r_tilde_IQ = R_I
+% (cosine)
 
 % It is important that this function only performs carrier demodulation. In
 % order to fully recover the baseband signal before the carrier modulation,
 % r_tilde_IQ should be filtered with a lowpass to remove highfrequency
-% components, which will be coded in the third question. 
+% components.
 
 
 r_tilde_IQ = zeros(size(seq_in));
