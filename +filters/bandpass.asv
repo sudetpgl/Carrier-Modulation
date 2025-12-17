@@ -1,0 +1,21 @@
+% Group : Sude Topgül & Antonia Juncu
+
+function [impulse_response] = bandpass(f_c, filterspan, B, n_os)
+% BANDPASS: generates the impulse response of an ideal bandpass filter.
+% The function designs an ideal bandpassfilter in the frequency domain.
+% Due to the convention of ifft in MATLAB, it shifts the created bandpass with ifftshift so that its DC (0 Hz) on the
+% frequency axis is on the first index. 
+%
+assert(mod(filterspan,2)==0,'filterspan must be an even number');
+
+%impulse_response = zeros(1,filterspan * n_os);
+
+samples_num = filterspan * n_os + 1; %number of samples
+
+f = (-samples_num/2 : (samples_num/2)-1) * n_os/samples_num; %n_os/samples_num -> FFT frquency resoultion
+H_BP = double(abs(f - f_c) <= B/2 | abs(f + f_c) <= B/2); 
+ 
+  h_BP = ifft(ifftshift(H_BP), 'symmetric');
+ impulse_response = fftshift(h_BP);
+end
+
