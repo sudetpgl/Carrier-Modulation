@@ -10,7 +10,7 @@ function impulse_response = lowpass(filterspan, B, n_os)
 % in normalized frequency units n_os
 %
 % Number of samples is defined with samples_num, which is the
-% multiplication of filterspan and n_os plus 1. The additinal sample is for the 0 Hz (DC) at the center.
+% multiplication of filterspan and n_os plus 1. Plus 1 is for the 0 Hz (DC) at the center
 % 
 % The frequency axis is defined over the interval [-samples_num/2, (samples_num/2)-1] with a frequency
 % resolution of n_os/samples_num corresponding to the FFT frequency bins.
@@ -18,9 +18,9 @@ function impulse_response = lowpass(filterspan, B, n_os)
 % freqeuncy bins, while each frequency bin represents a single discrete frequency point or a small interval that can be resolved by the FFT)
 % 
 % With H_LP the ideal lowpass filter is designed in the frequency domain.
-% To apply inverse fourier transform we must first shift the DC to index
+% To aplly inverse fourier transform we must first shift the DC to index
 % 1,due to MATLAB's ifft convention.
-% After the IFFT, the impulse response should be shifted back to the center (time 0) with
+% Afterwards the DC should be shifted back to the center (time 0) with
 % fftshift, because the given filter in the question is symmetric, meaning it has linear-phase. 
 % Therefore, we get the impulse response of an linear-phase ideal FIR lowpass filter.
 

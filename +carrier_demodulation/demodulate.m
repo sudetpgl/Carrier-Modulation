@@ -40,3 +40,5 @@ else
      R_I = seq_in .* (sqrt(2)*cos(2*pi*f*t + phase)); 
      r_tilde_IQ = R_I
 end 
+
+end 
