@@ -34,11 +34,11 @@ if is_complex == true
 
     R_I = seq_in .* (sqrt(2)*cos(2*pi*f*t + phase)); 
     R_Q = seq_in .* (-sqrt(2)*sin(2*pi*f*t + phase));
-    r_tilde_IQ = R_I + 1j*R_Q
+    r_tilde_IQ = R_I + 1j*R_Q;
   
 else 
      R_I = seq_in .* (sqrt(2)*cos(2*pi*f*t + phase)); 
-     r_tilde_IQ = R_I
+     r_tilde_IQ = R_I;
 end 
 
 end 
